@@ -1,0 +1,40 @@
+﻿@model AgriDoktorum.WebApp.Models.Entity.SendMessage
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <form id="test-form" class="white-popup-block mfp-hide">
+        <div class="popup_box ">
+            <div class="popup_inner">
+                <h3>Mesaj Gönder</h3>
+                <form action="">
+                    <div class="row flex-lg-row-reverse">
+                        <div class="col-xl-6">
+                            @Html.TextBoxFor(model => model.Name, null, new { placeholder = "İsim" })
+                        </div>
+                        <div class="col-xl-6">
+                            @Html.TextBoxFor(model => model.PhoneNumber, null, new { placeholder = "Tel No." })
+                        </div>
+                        <div class="col-xl-12">
+                            @Html.TextBoxFor(model => model.Email, null, new { placeholder = "Email" })
+                        </div>
+                        <div class="col-xl-12">
+                            @Html.TextAreaFor(model => model.Text, new { placeholder = "Mesajınız" })
+                        </div>
+                        <div class="col-xl-12">
+                            <button type="submit" class="boxed-btn3">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </form>
+}
+
+

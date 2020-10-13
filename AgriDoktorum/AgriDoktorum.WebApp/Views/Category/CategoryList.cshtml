@@ -1,0 +1,19 @@
+﻿@model IEnumerable<AgriDoktorum.WebApp.Models.Entity.Category>
+
+@if (Model.Count() > 0)
+{
+    <aside class="single_sidebar_widget post_category_widget">
+        <h4 class="widget_title">Kategoriler</h4>
+        @foreach (var item in Model)
+        {
+            <ul class="list cat-list">
+                <li>
+                    <a href="/Blog/List/@item.Id" class="d-flex">
+                        <p>@item.CategoryTitle</p>
+                    </a>
+                </li>
+            </ul>
+        }
+    </aside>
+}
+

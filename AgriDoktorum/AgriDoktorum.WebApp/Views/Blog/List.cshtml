@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AgriDoktorum.WebApp.Models.Entity.Blog>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <title>Blog</title>
+}
+
+<!-- bradcam_area_start  -->
+<div class="bradcam_area breadcam_bg bradcam_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Bloglar</h3>
+                    <p>
+                        <a href="@Url.Action("Index","Home")">Anasayfa /</a>
+                        Blog
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end  -->
+<!--================Blog Area =================-->
+<section class="blog_area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    @if (Model.Count() > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <article class="blog_item">
+                                <div class="blog_item_img" style="width:85%">
+                                    <img class="card-img rounded-0" src="~/upload/Blog/@item.BlogImage" alt="">
+                                    <a href="#" class="blog_item_date">
+                                        <p>@item.ModifiedOn</p>
+                                    </a>
+                                </div>
+
+                                <div class="blog_details" style="width:85%">
+
+                                    <h2>@item.BlogTittle</h2>
+
+                                    <p>
+                                        @item.BlogDescription
+                                    </p>
+                                    <ul class="blog-info-link">
+                                        <li><a href="@item.CategoryId"><i class="fa fa-user"></i> @item.Category.CategoryTitle</a></li>
+                                        <li>@Html.ActionLink(linkText: "Daha Fazla", actionName: "Details", controllerName: "Blog", routeValues: new { id = item.Id }, htmlAttributes: new { @class = "btn btn-info btn-sm" })</li>
+                                    </ul>
+                                </div>
+                            </article>
+                        }
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            Blog Bulunamadı!!
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    @Html.Partial("_Search")
+
+                    @{Html.RenderAction(actionName: "CategoryList", controllerName: "Category");}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->

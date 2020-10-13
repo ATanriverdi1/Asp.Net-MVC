@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AgriDoktorum.WebApp.Models.Entity.Treatment>
+
+@{
+    ViewBag.Title = "Index";
+    <title>MigrenTedavisi</title>
+}
+
+<!-- bradcam_area_start  -->
+<div class="bradcam_area breadcam_bg bradcam_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Tedavi Yöntemleri</h3>
+                    <p><a href="@Url.Action("Index","Home")">Anasayfa /</a> Tedavi Yöntemleri</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end  -->
+<!-- offers_area_start -->
+<div class="our_department_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-55">
+                    <h3>Tedavi Yöntemlerimiz</h3>
+                    <p>
+                        TEDAVİ OLUN, MİGREN KADERİNİZ OLMASIN!!!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-4 col-md-6 col-lg-4">
+                    <div class="single_department">
+                        <div class="department_thumb" style="height: 300px">
+                            <img src="~/upload/Treatment/@item.TreatmentImage" alt="">
+                        </div>
+                        <div class="department_content">
+                            <h3><a href="#">@item.TreatmentTitle</a></h3>
+                            @if (item.TreatmentText.Length > 90)
+                            {
+                                <p>@Html.Raw(item.TreatmentText.Substring(0, 90) + "...")</p>
+                                <a href="@Url.Action("Details","Treatment", new {id = item.Id })" class="learn_more">Daha Fazla</a>
+                            }
+                            else
+                            {
+                                <p>@Html.Raw(item.TreatmentText)</p>
+                                <a href="@Url.Action("Details","Treatment", new {id = item.Id })" class="learn_more">Daha Fazla</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-xl-4 col-md-6 col-lg-4">
+                <div class="single_department">
+                    <div class="department_thumb" style="height: 300px">
+                        <img src="~/web/img/department/treatment.jpg" alt="">
+                    </div>
+                    <div class="department_content">
+                        <h4><strong>Amacımız AĞRISIZ( MİGRENSİZ) Bir Yaşam...</strong></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- offers_area_end -->

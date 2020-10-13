@@ -1,0 +1,56 @@
+﻿@using AgriDoktorum.WebApp.Models.Entity
+@model IEnumerable<Blog>
+@{
+    ViewBag.Title = "BlogView";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Blog</h2>
+
+<p>
+    @Html.ActionLink("Yeni Blog", "Create", "Blog")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogTittle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogImage)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogTittle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogImage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Blog", new { id = item.Id }, new { @class = "btn btn-primary btn" })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", "Blog", new { id = item.Id }, new { @class = "btn btn-danger btn" })
+            </td>
+        </tr>
+    }
+
+</table>
+

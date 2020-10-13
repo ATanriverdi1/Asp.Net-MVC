@@ -1,0 +1,46 @@
+﻿@model AgriDoktorum.WebApp.Models.Entity.Treatment
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentImage)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "TreatmentView", "AdminView", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

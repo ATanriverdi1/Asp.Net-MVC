@@ -1,0 +1,55 @@
+﻿@model AgriDoktorum.WebApp.Models.Entity.PatientReference
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReferenceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReferenceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReferenceSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReferenceSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReferenceRemark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReferenceRemark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReferenceImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReferenceImage)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-primary " })
+        </div>
+    }
+</div>

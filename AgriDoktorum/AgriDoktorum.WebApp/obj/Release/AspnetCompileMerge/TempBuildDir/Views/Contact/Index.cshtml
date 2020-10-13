@@ -1,0 +1,65 @@
+﻿@model IEnumerable<AgriDoktorum.WebApp.Models.Entity.Contact>
+
+@{
+    ViewBag.Title = "Index";
+    <title>İletişim</title>
+}
+<!-- bradcam_area_start  -->
+<div class="bradcam_area breadcam_bg_2 bradcam_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>İletişim</h3>
+                    <p><a href="@Url.Action("Index", "Home")">Anasayfa /</a> İletişim</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end  -->
+<!-- ================ contact section start ================= -->
+<section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-5">
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                <h3>Adres</h3>
+                                <p>@item.Address</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                            <div class="media-body">
+                                <h3>Telefon</h3>
+                                <a href="tel:+9 @item.TelNo">
+                                    <p>@item.TelNo</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3>Email</h3>
+                                <a href="mailto:@item.Email">
+                                    <p>@item.Email</p>
+                                </a>
+                                @Html.ActionLink("Mesaj Gönder", "Create", "Sendmessages", null, new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="col-lg-4">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12039.685878040927!2d28.871758!3d41.026974!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa44e83bb6b7c1d67!2zw5Z6ZWwgR8O8bmfDtnJlbiBIYXN0YW5lc2k!5e0!3m2!1str!2str!4v1583931787420!5m2!1str!2str" width="400" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ contact section end ================= -->

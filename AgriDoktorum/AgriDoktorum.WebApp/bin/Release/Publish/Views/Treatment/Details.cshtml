@@ -1,0 +1,42 @@
+﻿@model AgriDoktorum.WebApp.Models.Entity.Treatment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Treatment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentImage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

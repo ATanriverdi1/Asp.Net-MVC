@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AgriDoktorum.WebApp.Models.Entity.Gallery>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Galeri</h2>
+
+<p>
+    @Html.ActionLink("Yeni Video", "Create","Gallery")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoUrl)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VideoUrl)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit","Gallery", new { id = item.Id }, new { @class = "btn btn-primary btn" })
+            </td>
+            <td>
+                @Html.ActionLink("Sil", "Delete", "Gallery", new { id = item.Id }, new { @class = "btn btn-danger btn" })
+            </td>
+        </tr>
+    }
+
+</table>

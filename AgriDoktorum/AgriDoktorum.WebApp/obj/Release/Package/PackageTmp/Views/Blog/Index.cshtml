@@ -1,0 +1,99 @@
+﻿@model AgriDoktorum.WebApp.Models.ViewModel.Blog.BlogPostViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <title>Blog</title>
+}
+
+<!-- bradcam_area_start  -->
+<div class="bradcam_area breadcam_bg bradcam_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Bloglar</h3>
+                    <p>
+                        <a href="@Url.Action("Index","Home")">Anasayfa /</a>
+                        Blog
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end  -->
+<!--================Blog Area =================-->
+<section class="blog_area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    @foreach (var item in Model.GetBlogs)
+                    {
+                    <article class="blog_item">
+                        <div class="blog_item_img" style="width:85%">
+                            <img class="card-img rounded-0" src="~/upload/Blog/@item.BlogImage" alt="">
+                            <a href="#" class="blog_item_date">
+                                <p>@item.ModifiedOn</p>
+                            </a>
+                        </div>
+
+                        <div class="blog_details" style="width:85%">
+
+                            <h2>@item.BlogTittle</h2>
+
+                            <p>
+                                @item.BlogDescription
+                            </p>
+                            <ul class="blog-info-link">
+                                <li><a href="@item.CategoryId"><i class="fa fa-user"></i> @item.Category.CategoryTitle</a></li>
+                                <li>@Html.ActionLink(linkText: "Daha Fazla", actionName: "Details", controllerName: "Blog", routeValues: new { id = item.Id }, htmlAttributes: new { @class = "btn btn-info btn-sm" })</li>
+                            </ul>
+                        </div>
+                    </article>
+                    }
+
+                    <div class="blog-pagination justify-content-center d-flex">
+                        <ul class="pagination">
+                            @if (Model.CurrentPage > 1)
+                            {
+                                <li class="page-item">
+                                    <a href="@Url.Action( actionName: "Index", controllerName: "Blog", routeValues: new { page = Model.CurrentPage - 1 })" class="page-link" aria-label="Previous">
+                                        <i class="ti-angle-left"></i>
+                                    </a>
+                                </li>
+                            }
+                            @for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                if (i == Model.CurrentPage)
+                                {
+                                    <li class="page-item active">
+                                        @Html.ActionLink(linkText: i.ToString(), actionName: "Index", controllerName: "Blog", routeValues: new { page = i },htmlAttributes: new {@class="page-link" })
+                                    </li>
+                                }
+                            }
+                            @if (Model.CurrentPage < Model.PageCount)
+                            {
+                                <li class="page-item">
+                                    <a href="@Url.Action( actionName: "Index", controllerName: "Blog", routeValues: new { page = Model.CurrentPage + 1 })" class="page-link" aria-label="Next">
+                                        <i class="ti-angle-right"></i>
+                                    </a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    @Html.Partial("_Search")
+
+                    @{Html.RenderAction(actionName: "CategoryList", controllerName: "Category");}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->

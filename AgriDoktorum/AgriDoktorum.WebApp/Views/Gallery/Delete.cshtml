@@ -1,0 +1,41 @@
+﻿@model AgriDoktorum.WebApp.Models.Entity.Gallery
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Galeri</h2>
+<h3>Bu içeriği kaldırmak istediğinizden emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoUrl)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> 
+        </div>
+        <br />
+        @Html.ActionLink("Listeye Dön", "Index")
+    }
+</div>

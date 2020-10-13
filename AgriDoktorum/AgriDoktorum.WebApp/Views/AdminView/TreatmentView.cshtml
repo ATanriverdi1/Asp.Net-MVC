@@ -1,0 +1,51 @@
+﻿@using AgriDoktorum.WebApp.Models.Entity
+@model IEnumerable<Treatment>
+@{
+    ViewBag.Title = "TreatmentView";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Tedavi Yöntemleri</h2>
+
+<p>
+    @Html.ActionLink("Yeni Tedavi Yöntemi", "Create", "Treatment")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatmentTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatmentText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatmentImage)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TreatmentTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TreatmentText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TreatmentImage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Treatment", new { id = item.Id }, new { @class = "btn btn-primary btn" })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", "Treatment", new { id = item.Id }, new { @class = "btn btn-danger btn" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

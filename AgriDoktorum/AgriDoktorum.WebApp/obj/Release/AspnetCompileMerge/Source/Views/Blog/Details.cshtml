@@ -1,0 +1,57 @@
+﻿@model AgriDoktorum.WebApp.Models.Entity.Blog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- bradcam_area_start  -->
+<div class="bradcam_area breadcam_bg bradcam_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Blog</h3>
+                    <p>
+                        <a href="@Url.Action("Index","Home")">Anasayfa /</a>
+                        Blog
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end  -->
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="~/upload/Blog/@Model.BlogImage" alt="">
+                    </div>
+                    <div class="blog_details">
+                        <h2>
+                            @Model.BlogTittle
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><a href="/Blog/List/@Model.CategoryId"><i class="fa fa-user"></i> @Model.Category.CategoryTitle</a></li>
+                            <li><span class="glyphicon glyphicon-time">@Model.ModifiedOn</span></li>
+                        </ul>
+                        <p class="excert">
+                            @Html.Raw(Model.BlogText)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    @Html.Partial("_Search")
+
+                    @{Html.RenderAction(actionName: "CategoryList", controllerName: "Category");}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ Blog Area end =================-->

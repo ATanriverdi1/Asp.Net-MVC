@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AgriDoktorum.WebApp.Models.Entity.PatientReference>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Referanslar</h2>
+
+<p>
+    @Html.ActionLink("Yeni Referans", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReferenceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReferenceSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReferenceRemark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReferenceImage)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceRemark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceImage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn" })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn" })
+            </td>
+        </tr>
+    }
+
+</table>

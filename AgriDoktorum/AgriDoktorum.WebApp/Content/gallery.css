@@ -1,0 +1,13 @@
+﻿.video {
+    height: 0;
+    position: relative;
+    padding-bottom: 56.25%; /* Если видео 16/9, то 9/16*100 = 56.25%. Также и с 4/3 - 3/4*100 = 75% */
+}
+
+    .video iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 70%;
+        height: 100%;
+    }

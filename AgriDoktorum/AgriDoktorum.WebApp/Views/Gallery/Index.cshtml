@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AgriDoktorum.WebApp.Models.Entity.Gallery>
+
+@{
+    ViewBag.Title = "Index";
+    <title>Galeri</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/gallery.css" rel="stylesheet" />
+<!-- bradcam_area_start  -->
+<div class="bradcam_area breadcam_bg bradcam_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>HASTA VİDEOLARI</h3>
+                    <p>
+                        <a href="@Url.Action("Index","Home")">Anasayfa /</a>
+                        Galeri
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end  -->
+<!--gallery_area_start-->
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-6">
+                <div class="col py-2">
+                    <div class="video">
+                        <iframe src="@item.VideoUrl" width="600" height="450" allow="autoplay; encrypted-media" allowfullscreen="true" frameborder="0" scrolling="no" title="JoomlaWorks AllVideos Player"></iframe>
+                    </div>
+                    <div class="text">
+                        <p>@item.Description</p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!--gallery_area_end-->

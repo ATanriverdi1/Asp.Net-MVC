@@ -1,0 +1,90 @@
+﻿@model AgriDoktorum.WebApp.Models.Entity.Blog
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ ?</h3>
+<div>
+    <h4>Blog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogTittle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogTittle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUsername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUsername)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "BlogView", "AdminView", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
